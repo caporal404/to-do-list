@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../styles/App.css'
 import Task from './Task';
 
 function App() {
@@ -27,17 +28,18 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <div className="App">
       <h2>📌 TODO List</h2>
-      <input
-        type="text"
-        value={newTask}
-        onChange={(e) => setNewTask(e.target.value)}
-        placeholder="Ajouter une tâche..."
-      />
-      <button onClick={addTask}>Ajouter</button>
-
-      <ul style={{ padding: 0 }}>
+      <div className="task-input">
+        <input
+          type="text"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          placeholder="Ajouter une tâche..."
+        />
+        <button onClick={addTask}>+</button>
+      </div>
+      <ul className="task-list">
         {
           tasks.map((task, index) => (
             <Task key={index} data={task} onComplete={() => toggleTask(index)} onDelete={() => deleteTask(index)} />
