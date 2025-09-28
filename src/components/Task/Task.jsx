@@ -1,4 +1,4 @@
-import '../styles/Task.css';
+import './Task.css';
 
 // eslint-disable-next-line react/prop-types
 const Task = ({ data = {}, onComplete, onDelete}) => {

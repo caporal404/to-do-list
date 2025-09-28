@@ -1,6 +1,6 @@
 import { useState } from "react";
-import '../styles/App.css'
-import Task from './Task';
+import './App.css'
+import Task from './components/Task/Task';
 
 function App() {
   const [tasks, setTasks] = useState([]); // Liste des tâches
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>📌 TODO List</h2>
+      <h2>TO-DO List</h2>
       <div className="task-input">
         <input
           type="text"
