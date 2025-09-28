@@ -7,11 +7,11 @@ const Task = ({ data = {}, onComplete, onDelete}) => {
             <label>
                 <input
                     type="checkbox"
-                    checked={data.completed}
+                    checked={data.isCompleted}
                     onChange={onComplete}
                 />
-                <p style={{ textDecoration: data.completed ? "line-through" : "none", margin: "0 10px" }}>
-                    {data.text}
+                <p style={{ textDecoration: data.isCompleted ? "line-through" : "none", margin: "0 10px" }}>
+                    {data.value}
                 </p>
             </label>
             <button onClick={onDelete}>❌</button>

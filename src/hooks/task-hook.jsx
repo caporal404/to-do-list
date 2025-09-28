@@ -7,19 +7,17 @@ export const useTasks = () => useContext(TaskContext)
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]); // Liste des tâches
-  const [current, setCurrent] = useState(""); // Tâche en cours d'écriture
 
   // Ajouter une nouvelle tâche
-  const add = () => {
-    if (current.trim() == "") return;
+  const add = text => {
+    if (text.trim() == "") return;
     setTasks([
       ...tasks,
       { 
-        value: current, 
+        value: text, 
         isCompleted: false
       }
     ]);
-    setCurrent(""); // Réinitialiser le champ
   };
 
   // Compléter une tâche
@@ -34,8 +32,6 @@ const TaskProvider = ({ children }) => {
 
   return (
     <TaskContext.Provider value={{
-      current,
-      setCurrent,
       tasks,
       add,
       toggle,
