@@ -1,52 +1,32 @@
-import { useState } from "react";
 import './App.css'
+import TaskProvider, { useTasks } from "./hooks/task-hook";
 import Task from './components/Task/Task';
 
 function App() {
-  const [tasks, setTasks] = useState([]); // Liste des tâches
-  const [newTask, setNewTask] = useState(""); // Tâche en cours d'écriture
-
-  // Ajouter une nouvelle tâche
-  const addTask = () => {
-    if (newTask.trim() == "") return;
-    setTasks([...tasks, { text: newTask, completed: false }]);
-    setNewTask(""); // Réinitialiser le champ
-  };
-
-  // Marquer une tâche comme complétée
-  const toggleTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks[index].completed = !updatedTasks[index].completed;
-    setTasks(updatedTasks);
-  };
-
-  // Supprimer une tâche
-  const deleteTask = (index) => {
-    const updatedTasks = [...tasks];
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
-  };
+  const { current, setCurrent, tasks, add, toggle, remove } = useTasks()
 
   return (
-    <div className="App">
-      <h2>TO-DO List</h2>
-      <div className="task-input">
-        <input
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-          placeholder="Ajouter une tâche..."
-        />
-        <button onClick={addTask}>+</button>
+    <TaskProvider>
+      <div className="App">
+        <h2>TO-DO List</h2>
+        <div className="task-input">
+          <input
+            type="text"
+            value={current}
+            onChange={(e) => setCurrent(e.target.value)}
+            placeholder="Ajouter une tâche..."
+          />
+          <button onClick={add}>+</button>
+        </div>
+        <ul className="task-list">
+          {
+            tasks.map((task, index) => (
+              <Task key={index} data={task} onComplete={() => toggle(index)} onDelete={() => remove(index)} />
+            ))
+          }
+        </ul>
       </div>
-      <ul className="task-list">
-        {
-          tasks.map((task, index) => (
-            <Task key={index} data={task} onComplete={() => toggleTask(index)} onDelete={() => deleteTask(index)} />
-          ))
-        }
-      </ul>
-    </div>
+    </TaskProvider>
   );
 }
 
