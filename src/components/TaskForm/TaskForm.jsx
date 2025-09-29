@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTasks } from '../../hooks/task-hook'
 import './TaskForm.css'
 
@@ -6,8 +6,13 @@ const TaskForm = () => {
   const { editedTask, add, edit } = useTasks()
   const [task, setTask] = useState(""); // Tâche en cours d'écriture
 
-  
+  // La tache en cours d'ecriture est remplacée par
+  // la tache a modifié si cette derniiere existe
   useEffect(() => editedTask && setTask(editedTask.value), [editedTask]) // editedTask : { id, value, isCompleted }
+
+  // On focus sur le champ à l'affichage du composant
+  const inputRef = useRef()
+  useLayoutEffect(() => inputRef.current.focus())
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,6 +32,7 @@ const TaskForm = () => {
         value={task}
         onChange={(e) => setTask(e.target.value)}
         placeholder="Ajouter une tâche..."
+        ref={inputRef}
       />
     </form>
   )
