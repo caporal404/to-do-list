@@ -17,7 +17,9 @@ const Task = ({ id, value, isCompleted }) => {
           {value}
         </p>
       </label>
-      <button onClick={() => remove(id)}>❌</button>
+      <button onClick={() => remove(id)}>
+        <i className="fas fa-trash-alt" />
+      </button>
     </div>
   )
 }
