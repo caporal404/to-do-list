@@ -7,6 +7,7 @@ export const useTasks = () => useContext(TaskContext)
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]); // Liste des tâches
+  const [editedTask, setEditedTask] = useState(undefined);
 
   // Ajouter une nouvelle tâche
   const add = text => {
@@ -31,11 +32,20 @@ const TaskProvider = ({ children }) => {
     setTasks(tasks => tasks.filter(task => task.id !== id));
   };
 
+  // Modification d'une tache
+  const edit = (id, newValue) => {
+    setTasks(tasks => tasks.map((task => task.id === id ? { ...task, value : newValue } : task)));
+    setEditedTask(undefined)
+  }
+
   return (
     <TaskContext.Provider value={{
       tasks,
+      editedTask,
+      setEditedTask,
       add,
       toggle,
+      edit,
       remove,
     }}>
       {children}

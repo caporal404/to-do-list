@@ -1,12 +1,11 @@
 .task {
     margin: 10px 0;
-    list-style-type: none;
     display: flex;
     justify-content: space-between;
 }
 
 .task label {
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
      
@@ -25,8 +24,12 @@
     }
 }
 
+.task .controls {
+    width: 19%;
+    padding: auto 0;
+}
+
 .task button {
-    width: 5%;
     background-color: transparent;
     border: 0;
 }
