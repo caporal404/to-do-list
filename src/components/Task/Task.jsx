@@ -3,7 +3,7 @@ import { useTasks } from '../../hooks/task-hook';
 import './Task.css';
 
 const Task = ({ data : task }) => {
-  const { setEditedTask, toggle, remove } = useTasks();
+  const { editedTask, setEditedTask, toggle, remove } = useTasks();
 
   return (
     <div className="task">
@@ -18,7 +18,10 @@ const Task = ({ data : task }) => {
         </p>
       </label>
       <div className="controls">
-        <button className='btn btn-edit' onClick={() => setEditedTask(task)}>
+        <button className='btn btn-edit' 
+          onClick={() => setEditedTask(task)} 
+          disabled={ editedTask == task || task.isCompleted } // On desactive le bouton si la tache est en cours de modification ou déjà complétée 
+        >
           <i className="fas fa-pencil-alt" />
         </button>
         ||
