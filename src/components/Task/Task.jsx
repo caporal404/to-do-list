@@ -12,6 +12,7 @@ const Task = ({ data : task }) => {
           type="checkbox"
           checked={task.isCompleted}
           onChange={() => toggle(task.id)}
+          disabled={ editedTask == task } // On desactive le bouton si la tache est en cours de modification
         />
         <p style={{ textDecoration: task.isCompleted ? "line-through" : "none", margin: "0 10px" }}>
           {task.value}
