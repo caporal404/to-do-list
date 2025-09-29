@@ -16,19 +16,18 @@ const TaskForm = () => {
     if (!editedTask) add(task)
     else // On modifit une tache
       edit(editedTask.id, task)
-    
+
     setTask("") // Réinitialiser le champ
   }
 
   return (
-    <form className="task-form">
+    <form className="task-form" onSubmit={handleSubmit}>
       <input
         type="text"
         value={task}
         onChange={(e) => setTask(e.target.value)}
         placeholder="Ajouter une tâche..."
       />
-      <button onClick={handleSubmit}>+</button>
     </form>
   )
 }
