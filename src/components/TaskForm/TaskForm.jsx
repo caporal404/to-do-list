@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTasks } from '../../hooks/task-hook'
+import './TaskForm.css'
 
 const TaskForm = () => {
   const { add } = useTasks()
@@ -7,7 +8,7 @@ const TaskForm = () => {
 
 
   return (
-    <form className="task-input">
+    <form className="task-form">
       <input
         type="text"
         value={task}

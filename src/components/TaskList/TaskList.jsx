@@ -1,17 +1,19 @@
+import { useEffect } from 'react'
 import { useTasks } from '../../hooks/task-hook'
 import Task from '../Task/Task'
 
 const TaskList = () => {
-  const { tasks, toggle, remove } = useTasks()
-  
+  const { tasks } = useTasks()
+  useEffect(() => console.log(tasks), [tasks])
+
   return (
-    <ul className="task-list">
+    <div className="task-list">
       {
-        tasks.map((task, index) => (
-          <Task key={index} data={task} onComplete={() => toggle(index)} onDelete={() => remove(index)} />
+        tasks.map(task => (
+          <Task key={task.id} {...task} />
         ))
       }
-    </ul>
+    </div>
   )
 }
 

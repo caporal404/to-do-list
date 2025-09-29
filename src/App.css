@@ -9,36 +9,6 @@
     margin-bottom: 15px;
 }
 
-.task-input {
-    display: flex;
-    justify-content: space-between;
-}
-
-.task-input input,
-.task-input button {
-    padding: 7px 10px;
-    font-size: 1.1rem;
-    border: 0.5px solid rgba(0, 0, 0, .5);
-}
-
-.task-input input {
-    width: 88%;
-    outline: none;
-    border-right: 0;
-    border-radius: 5px 0 0 5px;
-}
-
-.task-input input:hover,
-.task-input button:hover {
-    border: 0.5px solid rgba(0, 0, 0, .7);
-}
-
-.task-input button {
-    width: 12%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0;
-}
 
 .task-list {
     margin-top: 25px;

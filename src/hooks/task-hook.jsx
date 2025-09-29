@@ -14,6 +14,7 @@ const TaskProvider = ({ children }) => {
     setTasks([
       ...tasks,
       { 
+        id: Date.now(), // l'id represente la date d'aujourd'hui en millisecondes
         value: text, 
         isCompleted: false
       }
@@ -21,13 +22,13 @@ const TaskProvider = ({ children }) => {
   };
 
   // Compléter une tâche
-  const toggle = (index) => {
-    setTasks(tasks => tasks[index].isCompleted = !tasks[index].isCompleted);
+  const toggle = id => {
+    setTasks(tasks => tasks.map((task => task.id === id ? { ...task, isCompleted : !(task.isCompleted) } : task)));
   };
-
+  
   // Supprimer une tâche
-  const remove = (index) => {
-    setTasks(tasks => tasks.splice(index, 1));
+  const remove = id => {
+    setTasks(tasks => tasks.filter(task => task.id !== id));
   };
 
   return (

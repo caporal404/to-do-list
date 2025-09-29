@@ -1,22 +1,25 @@
+import { useTasks } from '../../hooks/task-hook';
 import './Task.css';
 
 // eslint-disable-next-line react/prop-types
-const Task = ({ data = {}, onComplete, onDelete}) => {
-    return (
-        <li className="Task">
-            <label>
-                <input
-                    type="checkbox"
-                    checked={data.isCompleted}
-                    onChange={onComplete}
-                />
-                <p style={{ textDecoration: data.isCompleted ? "line-through" : "none", margin: "0 10px" }}>
-                    {data.value}
-                </p>
-            </label>
-            <button onClick={onDelete}>❌</button>
-        </li>
-    )
+const Task = ({ id, value, isCompleted }) => {
+  const { toggle, remove } = useTasks();
+
+  return (
+    <div className="task">
+      <label>
+        <input
+          type="checkbox"
+          checked={isCompleted}
+          onChange={() => toggle(id)}
+        />
+        <p style={{ textDecoration: isCompleted ? "line-through" : "none", margin: "0 10px" }}>
+          {value}
+        </p>
+      </label>
+      <button onClick={() => remove(id)}>❌</button>
+    </div>
+  )
 }
 
 export default Task;

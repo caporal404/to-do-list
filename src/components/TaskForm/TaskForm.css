@@ -1,0 +1,32 @@
+
+.task-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-form input,
+.task-form button {
+  padding: 7px 10px;
+  font-size: 1.1rem;
+  border: 0.5px solid rgba(0, 0, 0, .5);
+}
+
+.task-form input {
+  width: 88%;
+  outline: none;
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
+}
+
+.task-form input:hover,
+.task-form button:hover {
+  border: 0.5px solid rgba(0, 0, 0, .7);
+}
+
+.task-form button {
+  width: 12%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
