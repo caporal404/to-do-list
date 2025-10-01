@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useLayoutEffect, useEffect, useState } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const TaskContext = createContext()
 export const useTasks = () => useContext(TaskContext)
@@ -8,6 +10,14 @@ export const useTasks = () => useContext(TaskContext)
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]); // Liste des tâches
   const [editedTask, setEditedTask] = useState(undefined);
+  
+  const { savedData, save } = useLocalStorage('tasks', []);
+
+  // On recupère les tâches enregistrées dans le localStorage 
+  useLayoutEffect(() => setTasks(savedData), [])
+  
+  // On enregistre dans le localStorage
+  useEffect(() => save(tasks), [tasks])
 
   // Ajouter une nouvelle tâche
   const add = text => {
