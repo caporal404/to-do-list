@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useTasks } from '../../hooks/task-hook';
+import { useTasks } from '../../providers/task-provider';
 import './Task.css';
 
 const Task = ({ data : task }) => {

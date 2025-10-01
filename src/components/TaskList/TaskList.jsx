@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useTasks } from '../../hooks/task-hook'
+import { useTasks } from '../../providers/task-provider';
 import Task from '../Task/Task'
 
 const TaskList = () => {

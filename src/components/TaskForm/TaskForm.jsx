@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useTasks } from '../../hooks/task-hook'
+import { useTasks } from '../../providers/task-provider';
 import './TaskForm.css'
 
 const TaskForm = () => {

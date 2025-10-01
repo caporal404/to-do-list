@@ -1,7 +1,7 @@
 import './App.css'
 import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
-import TaskProvider from "./hooks/task-hook";
+import TaskProvider from './providers/task-provider';
 
 function App() {
   return (
