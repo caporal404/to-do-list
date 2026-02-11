@@ -12,7 +12,7 @@ const Task = ({ data : task }) => {
           type="checkbox"
           checked={task.isCompleted}
           onChange={() => toggle(task.id)}
-          disabled={ editedTask == task } // On desactive le bouton si la tache est en cours de modification
+          disabled={ editedTask == task } // Disabled on Edition Mode
         />
         <p style={{ textDecoration: task.isCompleted ? "line-through" : "none", margin: "0 10px" }}>
           {task.value}
@@ -21,7 +21,7 @@ const Task = ({ data : task }) => {
       <div className="controls">
         <button className='btn btn-edit' 
           onClick={() => setEditedTask(task)} 
-          disabled={ editedTask == task || task.isCompleted } // On desactive le bouton si la tache est en cours de modification ou déjà complétée 
+          disabled={ editedTask == task || task.isCompleted } // Disabled on Edition Mode
         >
           <i className="fas fa-pencil-alt" />
         </button>

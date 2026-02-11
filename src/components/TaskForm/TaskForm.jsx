@@ -3,26 +3,33 @@ import { useTasks } from '../../providers/task-provider';
 import './TaskForm.css'
 
 const TaskForm = () => {
-  const { editedTask, add, edit } = useTasks()
-  const [task, setTask] = useState(""); // Tâche en cours d'écriture
+  const { editedTask, setEditedTask, add, edit } = useTasks()
+  const [task, setTask] = useState(""); // Current task 
 
-  // La tache en cours d'ecriture est remplacée par
-  // la tache a modifié si cette derniiere existe
+  // the current task began the edited task during Edition (Modification) Mode
   useEffect(() => editedTask && setTask(editedTask.value), [editedTask]) // editedTask : { id, value, isCompleted }
 
-  // On focus sur le champ à l'affichage du composant
+  // Focus the input field when component render
   const inputRef = useRef()
   useLayoutEffect(() => inputRef.current.focus())
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    // On créé une tache
+    // If task only contain blank
+    if (task.trim() == "") {
+      setTask("")
+      setEditedTask(undefined) // Leave Edition Mode
+      console.error("Task only contain blank")
+      return
+    }
+
+    // Add task if isn't Edition Mode else edit task
     if (!editedTask) add(task)
-    else // On modifit une tache
+    else 
       edit(editedTask.id, task)
 
-    setTask("") // Réinitialiser le champ
+    setTask("") // Clear input field
   }
 
   return (
@@ -30,9 +37,10 @@ const TaskForm = () => {
       <input
         type="text"
         value={task}
-        onChange={(e) => setTask(e.target.value)}
+        onChange={e => setTask(e.target.value)}
         placeholder="Ajouter une tâche..."
         ref={inputRef}
+        required
       />
     </form>
   )

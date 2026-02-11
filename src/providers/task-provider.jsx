@@ -1,48 +1,45 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useLayoutEffect, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 const TaskContext = createContext()
 export const useTasks = () => useContext(TaskContext)
 
 const TaskProvider = ({ children }) => {
-  const [tasks, setTasks] = useState([]); // Liste des tâches
-  const [editedTask, setEditedTask] = useState(undefined);
-  
   const { savedData, save } = useLocalStorage('tasks', []);
 
-  // On recupère les tâches enregistrées dans le localStorage 
-  useLayoutEffect(() => setTasks(savedData), [])
+  const [tasks, setTasks] = useState(savedData); // Task List
+  const [editedTask, setEditedTask] = useState(undefined);
   
-  // On enregistre dans le localStorage
+  
+  // Save tasks
   useEffect(() => save(tasks), [tasks])
 
-  // Ajouter une nouvelle tâche
+  // Add new task
   const add = text => {
-    if (text.trim() == "") return;
     setTasks([
       ...tasks,
       { 
-        id: Date.now(), // l'id represente la date d'aujourd'hui en millisecondes
+        id: Date.now(), // the Id is the actual date in milliseconds
         value: text, 
         isCompleted: false
       }
     ]);
   };
 
-  // Compléter une tâche
+  // Complete / or not a task
   const toggle = id => {
     setTasks(tasks => tasks.map((task => task.id === id ? { ...task, isCompleted : !(task.isCompleted) } : task)));
   };
   
-  // Supprimer une tâche
+  // Delete a task
   const remove = id => {
     setTasks(tasks => tasks.filter(task => task.id !== id));
   };
 
-  // Modification d'une tache
+  // Edit a task
   const edit = (id, newValue) => {
     setTasks(tasks => tasks.map((task => task.id === id ? { ...task, value : newValue } : task)));
     setEditedTask(undefined)

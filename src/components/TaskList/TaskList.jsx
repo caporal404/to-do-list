@@ -8,11 +8,9 @@ const TaskList = () => {
 
   return (
     <div className="task-list">
-      {
-        tasks.map(task => (
-          <Task key={task.id} data={task} />
-        ))
-      }
+      {tasks.map(task => (
+        <Task key={task.id} data={task} />
+      ))}
     </div>
   )
 }
