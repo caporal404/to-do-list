@@ -33,6 +33,10 @@ export default function taskReducer(tasks, action) {
           } : task
         )
 
+      // Clear all completed tasks
+      case 'CLEAR_COMPLETED':
+        return tasks.filter(task => !task.isCompleted)
+
       default:
         console.error(`Unknown action type: ${action.type}`);
     }

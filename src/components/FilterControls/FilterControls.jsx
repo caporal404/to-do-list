@@ -1,8 +1,8 @@
 import { useTasks } from "../../providers/taskProvider"
 
 const FilterControls = () => {
-  const { filteredTasks, setFilter } = useTasks()
-  
+  const { dispatch, filteredTasks, setFilter } = useTasks()
+
   return (
     <div className="filter-controls">
       <span className="">{`${filteredTasks.length} tasks left`}</span>
@@ -24,10 +24,10 @@ const FilterControls = () => {
         >Completed</button>
       </div>
 
-      {/* <button 
+      <button 
         className="btn"
         onClick={() => dispatch({type: 'CLEAR_COMPLETED'})}
-      >Clear completed</button> */}
+      >Clear completed</button>
     </div>
   )
 }
