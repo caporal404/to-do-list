@@ -1,6 +1,7 @@
+import TaskProvider from './providers/taskProvider';
 import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
-import TaskProvider from './providers/taskProvider';
+import FilterControls from './components/FilterControls/FilterControls';
 import './App.css'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <h2>TO-DO List</h2>
         <TaskForm />
         <TaskList />
+        <FilterControls />
       </div>
     </TaskProvider>
   );

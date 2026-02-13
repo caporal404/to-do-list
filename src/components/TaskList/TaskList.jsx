@@ -3,12 +3,12 @@ import { useTasks } from '../../providers/taskProvider';
 import Task from '../Task/Task'
 
 const TaskList = () => {
-  const { tasks } = useTasks()
-  useEffect(() => console.log(tasks), [tasks])
+  const { filteredTasks } = useTasks()
+  useEffect(() => console.log(filteredTasks), [filteredTasks])
 
   return (
     <div className="task-list">
-      {tasks.map(task => (
+      {filteredTasks.map(task => (
         <Task key={task.id} data={task} />
       ))}
     </div>
