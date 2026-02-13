@@ -1,9 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useTasks } from '../../providers/task-provider';
+import { useTasks } from '../../providers/taskProvider';
 import './TaskForm.css'
 
 const TaskForm = () => {
-  const { editedTask, setEditedTask, add, edit } = useTasks()
+  const { editedTask, setEditedTask, dispatch } = useTasks()
   const [task, setTask] = useState(""); // Current task 
 
   // the current task began the edited task during Edition (Modification) Mode
@@ -18,18 +18,27 @@ const TaskForm = () => {
 
     // If task only contain blank
     if (task.trim() == "") {
-      setTask("")
+      setTask("") // Clear input field
       setEditedTask(undefined) // Leave Edition Mode
       console.error("Task only contain blank")
       return
     }
 
     // Add task if isn't Edition Mode else edit task
-    if (!editedTask) add(task)
-    else 
-      edit(editedTask.id, task)
+    if (!editedTask) dispatch({
+      type: 'ADD',
+      payload: task
+    })
+    else dispatch({ 
+      type: 'EDIT',
+      payload: {
+        id: editedTask.id, 
+        newValue: task
+      }
+    })
 
     setTask("") // Clear input field
+    setEditedTask(undefined) // Leave Edition Mode
   }
 
   return (

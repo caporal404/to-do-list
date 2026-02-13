@@ -1,6 +1,6 @@
 import TaskForm from './components/TaskForm/TaskForm';
 import TaskList from './components/TaskList/TaskList';
-import TaskProvider from './providers/task-provider';
+import TaskProvider from './providers/taskProvider';
 import './App.css'
 
 function App() {

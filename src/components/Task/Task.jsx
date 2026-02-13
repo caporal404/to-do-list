@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useTasks } from '../../providers/task-provider';
+import { useTasks } from '../../providers/taskProvider';
 import './Task.css';
 
 const Task = ({ data : task }) => {
-  const { editedTask, setEditedTask, toggle, remove } = useTasks();
+  const { editedTask, setEditedTask, dispatch } = useTasks();
 
   return (
     <div className="task">
@@ -11,7 +11,7 @@ const Task = ({ data : task }) => {
         <input
           type="checkbox"
           checked={task.isCompleted}
-          onChange={() => toggle(task.id)}
+          onChange={() => dispatch({type: 'TOGGLE', payload: task.id})}
           disabled={ editedTask == task } // Disabled on Edition Mode
         />
         <p style={{ textDecoration: task.isCompleted ? "line-through" : "none", margin: "0 10px" }}>
@@ -26,7 +26,7 @@ const Task = ({ data : task }) => {
           <i className="fas fa-pencil-alt" />
         </button>
         ||
-        <button className='btn btn-remove' onClick={() => remove(task.id)}>
+        <button className='btn btn-remove' onClick={() => dispatch({type: 'REMOVE', payload: task.id})}>
           <i className="fas fa-trash-alt" />
         </button>
       </div>
