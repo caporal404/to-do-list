@@ -7,7 +7,7 @@ const TaskList = () => {
   useEffect(() => console.log(filteredTasks), [filteredTasks])
 
   return (
-    <div className="task-list">
+    <div className="task-list mt-4">
       {filteredTasks.map(task => (
         <Task key={task.id} data={task} />
       ))}

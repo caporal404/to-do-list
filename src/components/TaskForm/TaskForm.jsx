@@ -43,14 +43,16 @@ const TaskForm = () => {
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={task}
-        onChange={e => setTask(e.target.value)}
-        placeholder="Ajouter une tâche..."
-        ref={inputRef}
-        required
-      />
+      <div className="form-control p-0">
+        <input
+          type="text"
+          value={task}
+          onChange={e => setTask(e.target.value)}
+          placeholder="Ajouter une tâche..."
+          ref={inputRef}
+          required
+        />
+      </div>
     </form>
   )
 }
