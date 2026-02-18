@@ -1,4 +1,4 @@
-@import url('/assets/bootstrap/css/bootstrap.min.css');
+@import url('bootstrap/dist/css/bootstrap.min.css');
 @import url('/assets/fontawesome/css/all.min.css');
 
 @font-face {
@@ -10,7 +10,7 @@
     /* Primary */
 
     --blue-500: hsl(220, 98%, 61%);
-    --gradient: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+    --gradient: 135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%);
     --purple-300: hsl(234, 39%, 85%);
     --gray-600: hsl(236, 9%, 61%);
 
@@ -24,7 +24,7 @@
 
     --navy-950: hsl(235, 21%, 11%);
     --navy-900: hsl(235, 24%, 19%);
-    --purple-100: (hover): hsl(236, 33%, 92%);
+    --purple-100: hsl(236, 33%, 92%);
     --purple-600: hsl(235, 16%, 43%);
     --purple-700: hsl(233, 14%, 35%);
     --purple-800: hsl(237, 14%, 26%);
@@ -35,12 +35,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Josefin Sans';
+    font-weight: 400;
 }
 
 body {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 20px;
@@ -52,6 +52,6 @@ body::before {
     top: 0;
     z-index: -1;
     width: 100%;
-    height: 35%;
+    height: 40%;
     background: url('/assets/images/bg-desktop-light.jpg') center/cover no-repeat;
 }

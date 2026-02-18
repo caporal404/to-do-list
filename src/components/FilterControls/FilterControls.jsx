@@ -1,31 +1,32 @@
 import { useTasks } from "../../providers/taskProvider"
+import './FilterControls.css'
 
 const FilterControls = () => {
-  const { dispatch, filteredTasks, setFilter } = useTasks()
+  const { dispatch, filteredTasks, filter, setFilter } = useTasks()
 
   return (
-    <div className="filter-controls">
+    <div className="filter-controls d-flex align-items-center justify-content-between py-3 px-4">
       <span className="">{`${filteredTasks.length} tasks left`}</span>
 
-      <div className="filters">
+      <div className="filters d-flex gap-4">
         <button
-          className="btn btn-filter"
+          className={`btn btn-filter ${filter === 'ALL' && 'active'}`}
           onClick={() => setFilter('ALL')}
         >All</button>
 
         <button
-          className="btn btn-filter"
+          className={`btn btn-filter ${filter === 'ACTIVE' && 'active'}`}
           onClick={() => setFilter('ACTIVE')}
         >Active</button>
-        
+    
         <button
-          className="btn btn-filter"
+          className={`btn btn-filter ${filter === 'COMPLETED' && 'active'}`}
           onClick={() => setFilter('COMPLETED')}
         >Completed</button>
       </div>
 
       <button 
-        className="btn"
+        className="btn p-0"
         onClick={() => dispatch({type: 'CLEAR_COMPLETED'})}
       >Clear completed</button>
     </div>

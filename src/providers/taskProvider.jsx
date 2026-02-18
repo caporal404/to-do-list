@@ -40,6 +40,7 @@ const TaskProvider = ({ children }) => {
       editedTask,
       setEditedTask,
       filteredTasks,
+      filter,
       setFilter
     }}>
       {children}

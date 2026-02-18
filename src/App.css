@@ -1,19 +1,21 @@
 
 .App {
-  width: 60vw;
+  margin-top: 25%;
+  width: 70vw;
   max-width: 550px;
 }
 
 h2 {
-  font-size: 1.7em;
-  font-weight: 600;
+  font-size: 1.8em;
+  font-weight: 700;
   letter-spacing: 15px;
   color: #fff;
+  height: auto;
 }
 
 .btn-theme {
   background-color: transparent;
   border: 0;
-  scale: 0.9;
   cursor: pointer;
 }
+

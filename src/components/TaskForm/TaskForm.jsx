@@ -46,6 +46,7 @@ const TaskForm = () => {
       <div className="form-control p-0">
         <input
           type="text"
+          className="w-100 m-0 py-3 pe-3"
           value={task}
           onChange={e => setTask(e.target.value)}
           placeholder="Ajouter une tâche..."
